@@ -1,3 +1,6 @@
+"""
+Base Modul
+"""
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -8,6 +11,11 @@ class BaseObject:
         self.wait = WebDriverWait(driver, 5)
 
     def is_visible(self, locator):
+        """
+        This method helps us to find visible element
+        :param locator: locator to find element
+        :return: visible element
+        """
         return self.wait.until(ec.visibility_of_element_located(locator))
 
     def is_clickable(self, locator):
