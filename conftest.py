@@ -6,6 +6,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from pom.index_page import IndexPage
+from pom.main_page import MainPage
 
 
 @pytest.fixture
@@ -36,6 +37,22 @@ def setup(get_webdriver):
 def index_page(setup):
     yield IndexPage(setup)
 
+
+#зафикстурили тест (логин)
+@pytest.fixture(scope='function')
+def auth_setup(get_webdriver):
+    driver = get_webdriver
+    auth = IndexPage(driver)
+    url = 'https://www.saucedemo.com/'
+    driver.get(url)
+    auth.authorization()
+    yield driver
+    driver.quit()
+
+
+@pytest.fixture
+def authorized_page(auth_setup):
+    yield MainPage(auth_setup)
 
 
 
