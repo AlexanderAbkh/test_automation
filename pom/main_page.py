@@ -17,33 +17,38 @@ class MainPage(BaseObject, Assertion):
     def click_close_menu_button(self):
         self.to_click(l.CLOSE_MENU_BUTTON)
 
-    def check_items(self):
-        actual_text = self.is_visible(l.ALL_ITEMS_BUTTON).text
-        expected_text = 'All Items'
-        self.assertion(actual_text, expected_text)
+    def click_add_back_pack(self):
+        self.to_click(l.FIRST_BTN_ADD_TO_CARD)
 
-    def check_about_link(self):
-        actual_text = self.is_visible(l.ABOUT_LINK).text
-        expected_text = 'About'
-        self.assertion(actual_text, expected_text)
+    def check_remove_btn(self):
+        exp_text = 'REMOVE'
+        actual_text = self.get_text(l.FIRST_BTN_REMOVE)
+        self.assertion(actual_text, exp_text)
 
-    def check_logout_link(self):
-        actual_text = self.is_visible(l.LOGIN_BUTTON).text
-        expected_text = 'Logout'
-        self.assertion(actual_text, expected_text)
-
-    def check_reset_link(self):
-        actual_text = self.is_visible(l.RESET_APP_STATE).text
-        expected_text = 'Reset App State'
-        self.assertion(actual_text, expected_text)
-
-    def check_closed_menu(self):
-        actual_text = self.is_visible(l.TITLE_TEXT).text
-        expected_text = 'PRODUCTS'
-        self.assertion(actual_text, expected_text)
+    def go_to_cart_list(self):
+        self.to_click(l.SHOP_CART_LINK)
 
 
-    #Параметризировали тесты выше
+    def check_back_title(self):
+        exp_text = 'Sauce Labs Backpack'
+        actual_text = self.get_text(l.BACK_PACK_TITLE)
+        self.assertion(actual_text, exp_text)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -51,6 +56,13 @@ class MainPage(BaseObject, Assertion):
         actual_text = self.get_text(locator)
         expected_text = exp_text
         self.assertion(actual_text, expected_text)
+
+
+
+
+
+
+
 
 
 

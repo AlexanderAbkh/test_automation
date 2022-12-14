@@ -1,6 +1,7 @@
 from base_object.base import BaseObject
 from base_object.locators import Locators as l
 from base_object.assertion import Assertion
+from env_config import *
 
 
 class IndexPage(BaseObject, Assertion):
@@ -15,13 +16,13 @@ class IndexPage(BaseObject, Assertion):
         self.click_login_button()
 
     def enter_user_name(self):
-        self.to_text(l.USERNAME_FIELD, 'standard_user')
+        self.to_text(l.USERNAME_FIELD, USERNAME)
 
     def enter_password(self):
-        self.to_text(l.PASSWORD_FIELD, 'secret_sauce')
+        self.to_text(l.PASSWORD_FIELD, PASSWORD)
 
     def enter_incorrect_password(self):
-        self.to_text(l.PASSWORD_FIELD, '123456')
+        self.to_text(l.PASSWORD_FIELD, INCORRECT_PASSWORD)
 
     def click_login_button(self):
         self.to_click(l.LOGIN_BUTTON)

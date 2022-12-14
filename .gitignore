@@ -4,5 +4,6 @@
 /pytest_report
 /.pytest_cache
 */pytest_report
-/allure-results
+*/allure-results
 logfile.log
+/allure-results
