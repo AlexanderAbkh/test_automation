@@ -8,7 +8,8 @@ def test_add_to_cart(authorized_page):
     authorized_page.go_to_cart_list()
     authorized_page.check_back_title()
 
-
+def test_sorted_products(authorized_page):
+    authorized_page.get_sorted_products()
 
 
 

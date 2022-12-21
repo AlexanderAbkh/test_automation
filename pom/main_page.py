@@ -35,6 +35,15 @@ class MainPage(BaseObject, Assertion):
         self.assertion(actual_text, exp_text)
 
 
+    def get_sorted_products(self):
+        sorted_products = self.are_visible(l.ALL_PRODUCTS)
+        list_of_products = []
+
+        for i in sorted_products:
+            text = i.text
+            list_of_products.append(text)
+        print(list_of_products)
+        return list_of_products
 
 
 
@@ -52,10 +61,7 @@ class MainPage(BaseObject, Assertion):
 
 
 
-    def check_elements_list(self, locator, exp_text):
-        actual_text = self.get_text(locator)
-        expected_text = exp_text
-        self.assertion(actual_text, expected_text)
+
 
 
 

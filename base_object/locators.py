@@ -17,6 +17,7 @@ class Locators:
     FIRST_BTN_REMOVE = (By.ID, 'remove-sauce-labs-backpack')
     SHOP_CART_LINK = (By.CLASS_NAME, 'shopping_cart_link')
     BACK_PACK_TITLE = (By.CLASS_NAME, 'inventory_item_name')
+    ALL_PRODUCTS = (By.CSS_SELECTOR, '.inventory_list .inventory_item_name')
 
 
 

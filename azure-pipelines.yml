@@ -1,3 +1,12 @@
+parameters:
+- name: subscription
+  displayName: Scopes
+  type: string
+  default: regression
+  values:
+  - smoke
+  - regression
+
 trigger:
 - master
 
@@ -19,12 +28,24 @@ steps:
       pip install -r requirements.txt
   displayName: 'Install dependencies'
 
+#- task: CmdLine@2
+  #inputs:
+  #  script: |
+  #    pytest
+  #displayName: 'pytest'
+  #continueOnError: true
+
 - task: CmdLine@2
   inputs:
-    script: |
-      pytest
+    ${{ if contains(parameters.subscription, 'regression') }}:
+      script: |
+        pytest
+    ${{ if contains(parameters.subscription, 'smoke') }}:
+      script: |
+        pytest -k 'smoke'
   displayName: 'pytest'
   continueOnError: true
+
 
 - task: PublishTestResults@2
   inputs:
