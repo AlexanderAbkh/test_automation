@@ -7,6 +7,13 @@ parameters:
   - smoke
   - regression
 
+schedules:
+- cron: "0 0 * * *"
+  displayName: Daily midnight build
+  branches:
+    include:
+    - master
+
 trigger:
 - master
 
@@ -42,7 +49,7 @@ steps:
         pytest
     ${{ if contains(parameters.subscription, 'smoke') }}:
       script: |
-        pytest -k 'smoke'
+        pytest -k "smoke"
   displayName: 'pytest'
   continueOnError: true
 
