@@ -1,5 +1,5 @@
 {
-  "correct_username": "standard_user",
-  "correct_password": "secret_sauce",
+  "correct_username": "$(correct_username)",
+  "correct_password": "$(correct_password)",
   "incorrect_password": "123456"
 }

@@ -27,6 +27,14 @@ steps:
     addToPath: true
     architecture: 'x64'
 
+- task: replacetokens@3
+  displayName: 'Replace tokens'
+  inputs:
+    targetFiles: |
+      **/test_data/creds.json
+    tokenPrefix: '$('
+    tokenSuffix: ')'
+
 - script: |
 - task: CmdLine@2
   inputs:
