@@ -56,20 +56,19 @@ def authorized_page(auth_setup):
 
 
 
+@pytest.fixture(scope='function', autouse=True)
+def screenshot_on_failures(setup, request):
+    failed_tests_count = request.session.testsfailed
+    yield
+    if request.session.testsfailed > failed_tests_count:
+        test_case_name = request.node.name
+        screenshot = 'screenshot_on_failures' + f'_{test_case_name}' + '.png'
+        setup.get_screenshot_as_file(screenshot)
+        allure.attach.file(screenshot, 'screenshot_on_failures.png', attachment_type=allure.attachment_type.PNG)
 
 
 
-"""
-@pytest.hookimpl(hookwrapper=True, tryfirst=True)
-def pytest_runtest_makereport(item):
-    outcome = yievld
-    rep = outcome.get_result()
-    marker = item.get_closest_marker("ui")
-    if marker:
-        if rep.when == "call" and rep.failed:
-            try:
-                allure.attach(item.instance.driver.get_screenshot_as_png(),
-                              name=item.name,
-                              attachment_type=allure.attachment_type.PNG)
-            except Exception as e:
-                print(e)"""
+
+
+
+

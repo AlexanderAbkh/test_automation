@@ -5,6 +5,7 @@ from env_config import *
 
 
 class IndexPage(BaseObject, Assertion):
+
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
@@ -37,16 +38,16 @@ class IndexPage(BaseObject, Assertion):
     def check_title(self):
         actual_text = self.get_text(l.TITLE_TEXT)
         expected_text = 'PRODUCTS'
-        self.assertion(actual_text, expected_text)
+        self.assertion_equal(actual_text, expected_text)
 
     def check_login_button(self):
         actual_result = self.to_get_attribute(l.LOGIN_BUTTON, 'value')
         expected_result = 'Login'
-        self.assertion(actual_result, expected_result)
+        self.assertion_equal(actual_result, expected_result)
 
     def check_validation(self):
         actual_text = self.get_text(l.VALIDATION)
         expected_text = 'Epic sadface: Username and password do not match any user in this service'
-        self.assertion(actual_text, expected_text)
+        self.assertion_equal(actual_text, expected_text)
 
 
